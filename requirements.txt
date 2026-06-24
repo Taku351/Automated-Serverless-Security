@@ -1,0 +1,9 @@
+boto3
+joblib
+pandas
+plotly
+pyarrow
+s3fs
+scikit-learn
+streamlit
+xgboost
