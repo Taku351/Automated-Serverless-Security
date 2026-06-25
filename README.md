@@ -11,19 +11,24 @@ An educational AWS security analytics project that catalogs network telemetry in
 
 ## Architecture
 
-```mermaid
-flowchart LR
-    A[Network telemetry files] --> B[(Amazon S3<br/>analytics/)]
-    B --> C[AWS Glue Crawler]
-    C --> D[Glue Data Catalog]
-    D --> E[Amazon Athena]
-    E --> F[Streamlit Dashboard]
-    G[(Trusted local model artifacts)] --> F
-    F --> H[Amazon CloudWatch Logs]
-    E --> I[(S3 Athena results)]
-```
+![Cybersecurity data lake architecture with ML triage](docs/images/aws-architecture-diagram.svg)
 
-The analytics layer uses managed AWS services. The original dashboard was developed in an AWS Cloud9 EC2 environment, so the dashboard-hosting portion itself is **not serverless**.
+### Data flow
+
+1. Network telemetry is stored in an Amazon S3 raw-data zone.
+2. AWS Glue crawls the files and publishes schema metadata to the Glue Data Catalog.
+3. Amazon Athena queries the cataloged telemetry and writes query results to S3.
+4. Jupyter or SageMaker notebooks prepare the data and train XGBoost models.
+5. The Streamlit dashboard reads Athena results and trusted model artifacts to show attack trends, targeted ports, predictions, and model evaluation results.
+6. CloudWatch Logs records dashboard access, application errors, and high-volume threat events; S3 can optionally retain longer-term archives.
+
+> **Accuracy clarification:** The original diagram combined two experiments. The natural-distribution model reached about **97.5% accuracy** with **0.61 macro F1**. The balanced model reached about **84.1% accuracy** with **0.79 macro F1**, trading overall accuracy for better minority-attack detection.
+
+**Implementation notes**
+
+- S3, Glue, Athena, and CloudWatch are managed/serverless AWS services.
+- The original Streamlit dashboard ran in an AWS Cloud9 EC2 environment, so the complete end-to-end application was not entirely serverless.
+- A single S3 bucket with separate prefixes can represent raw data, processed/model files, Athena results, and archived logs; separate buckets are optional.
 
 ## What the project demonstrates
 

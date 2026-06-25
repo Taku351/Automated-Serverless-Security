@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="760" viewBox="0 0 1400 760">
+<defs>
+  <style>
+    .title{font:700 32px Arial;fill:#111827}.head{font:700 20px Arial;fill:white}.label{font:600 17px Arial;fill:#111827}.small{font:14px Arial;fill:#374151}.note{font:13px Arial;fill:#4b5563}.arrow{stroke:#374151;stroke-width:3;fill:none;marker-end:url(#m)}
+  </style>
+  <marker id="m" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#374151"/></marker>
+</defs>
+<rect width="1400" height="760" fill="#f8fafc"/>
+<text x="700" y="48" text-anchor="middle" class="title">Cybersecurity Data Lake Architecture with ML Triage</text>
+
+<!-- Sources -->
+<rect x="35" y="275" width="180" height="120" rx="16" fill="#e5e7eb" stroke="#6b7280" stroke-width="2"/>
+<text x="125" y="320" text-anchor="middle" class="label">Network Telemetry</text><text x="125" y="348" text-anchor="middle" class="small">Educational log files</text><text x="125" y="372" text-anchor="middle" class="small">Internal / lab sources</text>
+
+<!-- Data lake -->
+<rect x="250" y="110" width="410" height="510" rx="18" fill="#ecfdf5" stroke="#3f8f29" stroke-width="3"/>
+<rect x="250" y="110" width="410" height="52" rx="18" fill="#3f8f29"/><text x="455" y="144" text-anchor="middle" class="head">DATA INGESTION &amp; QUERY</text>
+<rect x="290" y="235" width="150" height="90" rx="14" fill="white" stroke="#65a30d" stroke-width="2"/><text x="365" y="270" text-anchor="middle" class="label">Amazon S3</text><text x="365" y="296" text-anchor="middle" class="small">Raw telemetry zone</text>
+<rect x="475" y="235" width="150" height="90" rx="14" fill="white" stroke="#7c3aed" stroke-width="2"/><text x="550" y="270" text-anchor="middle" class="label">AWS Glue</text><text x="550" y="296" text-anchor="middle" class="small">Crawler</text>
+<rect x="475" y="390" width="150" height="90" rx="14" fill="white" stroke="#7c3aed" stroke-width="2"/><text x="550" y="425" text-anchor="middle" class="label">Glue Catalog</text><text x="550" y="451" text-anchor="middle" class="small">Schemas &amp; tables</text>
+<rect x="290" y="390" width="150" height="90" rx="14" fill="white" stroke="#7c3aed" stroke-width="2"/><text x="365" y="425" text-anchor="middle" class="label">Athena</text><text x="365" y="451" text-anchor="middle" class="small">Serverless SQL</text>
+<rect x="290" y="515" width="335" height="65" rx="14" fill="white" stroke="#65a30d" stroke-width="2"/><text x="457" y="545" text-anchor="middle" class="label">S3 Results / Processed Zones</text><text x="457" y="568" text-anchor="middle" class="small">Athena output, model assets, optional archives</text>
+
+<!-- ML and app -->
+<rect x="710" y="110" width="420" height="510" rx="18" fill="#eff6ff" stroke="#2580b8" stroke-width="3"/>
+<rect x="710" y="110" width="420" height="52" rx="18" fill="#2580b8"/><text x="920" y="144" text-anchor="middle" class="head">ML TRIAGE &amp; DASHBOARD</text>
+<rect x="755" y="220" width="150" height="90" rx="14" fill="white" stroke="#2563eb" stroke-width="2"/><text x="830" y="255" text-anchor="middle" class="label">Jupyter /</text><text x="830" y="279" text-anchor="middle" class="label">SageMaker</text><text x="830" y="300" text-anchor="middle" class="small">Model training</text>
+<rect x="945" y="220" width="150" height="90" rx="14" fill="white" stroke="#2563eb" stroke-width="2"/><text x="1020" y="255" text-anchor="middle" class="label">XGBoost</text><text x="1020" y="279" text-anchor="middle" class="small">Natural vs balanced</text><text x="1020" y="300" text-anchor="middle" class="small">sampling</text>
+<rect x="755" y="385" width="340" height="105" rx="14" fill="white" stroke="#2563eb" stroke-width="2"/><text x="925" y="420" text-anchor="middle" class="label">Streamlit Security Dashboard</text><text x="925" y="449" text-anchor="middle" class="small">Attack trends • targeted ports • predictions</text><text x="925" y="474" text-anchor="middle" class="small">Original hosting: Cloud9 on EC2</text>
+<rect x="755" y="525" width="340" height="65" rx="14" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/><text x="925" y="553" text-anchor="middle" class="label">Model tradeoff</text><text x="925" y="577" text-anchor="middle" class="small">Natural: 97.5% accuracy | Balanced: 0.79 macro F1</text>
+
+<!-- Monitoring -->
+<rect x="1170" y="205" width="195" height="210" rx="18" fill="#fdf2f8" stroke="#be185d" stroke-width="3"/>
+<rect x="1170" y="205" width="195" height="48" rx="18" fill="#be185d"/><text x="1267" y="237" text-anchor="middle" class="head">MONITORING</text>
+<text x="1267" y="300" text-anchor="middle" class="label">CloudWatch Logs</text><text x="1267" y="330" text-anchor="middle" class="small">Access • errors</text><text x="1267" y="354" text-anchor="middle" class="small">threat events</text><text x="1267" y="390" text-anchor="middle" class="small">Optional S3 archive</text>
+
+<!-- Arrows -->
+<path class="arrow" d="M215 335 H290"/><path class="arrow" d="M440 280 H475"/><path class="arrow" d="M550 325 V390"/><path class="arrow" d="M475 435 H440"/><path class="arrow" d="M365 480 V515"/>
+<path class="arrow" d="M625 548 H690 V265 H755"/><path class="arrow" d="M905 265 H945"/><path class="arrow" d="M1020 310 V385"/><path class="arrow" d="M660 435 H755"/><path class="arrow" d="M1095 437 H1145 V310 H1170"/>
+<text x="680" y="420" class="note">query data</text><text x="681" y="245" class="note">training data</text>
+
+<text x="700" y="690" text-anchor="middle" class="small">Managed/serverless analytics: S3, Glue, Athena, CloudWatch • Compute-hosted components: notebooks and Streamlit on EC2/Cloud9</text>
+</svg>
