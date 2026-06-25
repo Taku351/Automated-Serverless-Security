@@ -11,6 +11,8 @@ An educational AWS security analytics project that catalogs network telemetry in
 
 ## Architecture
 
+<img width="2048" height="1117" alt="723819698_1027559379778634_1898527358977400440_n" src="https://github.com/user-attachments/assets/fbc31088-581a-447e-b426-b47884d8dfb8" />
+
 ![Cybersecurity data lake architecture with ML triage](docs/images/aws-architecture-diagram.svg)
 
 ### Data flow
